@@ -1,0 +1,120 @@
+return function()
+	local icons = {
+		ui = require("util.icons").get("ui", true),
+		misc = require("util.icons").get("misc", true),
+	}
+
+	local nvim_lsp = require("lspconfig")
+	require("mason").setup({
+		ui = {
+			border = "single",
+			icons = {
+				package_pending = icons.ui.Modified_alt,
+				package_installed = icons.ui.Check,
+				package_uninstalled = icons.misc.Ghost,
+			},
+			keymaps = {
+				toggle_server_expand = "<CR>",
+				install_server = "i",
+				update_server = "u",
+				check_server_version = "c",
+				update_all_servers = "U",
+				check_outdated_servers = "C",
+				uninstall_server = "X",
+				cancel_installation = "<C-c>",
+			},
+		},
+	})
+	require("mason-lspconfig").setup({
+		ensure_installed = {
+			"lua_ls",
+			"rust_analyzer",
+			"pylsp",
+		},
+	})
+
+	local on_attach = function(client, bufnr)
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+		-- format on save
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.format()
+			end,
+		})
+	end
+
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+	local lsp_config = {
+		capabilities = capabilities,
+		on_attach = function(_, bufnr)
+			on_attach(_, bufnr)
+		end,
+	}
+
+	nvim_lsp.lua_ls.setup(lsp_config)
+	nvim_lsp.gopls.setup(lsp_config)
+	nvim_lsp.pylsp.setup(lsp_config)
+
+	-- _timers = {}
+	-- local function setup_diagnostics(client, buffer)
+	-- 	if require("vim.lsp.diagnostic")._enable then
+	-- 		return
+	-- 	end
+
+	-- 	local diagnostic_handler = function()
+	-- 		local params = vim.lsp.util.make_text_document_params(buffer)
+	-- 		client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+	-- 			if err then
+	-- 				local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
+	-- 				vim.lsp.log.error(err_msg)
+	-- 			end
+	-- 			local diagnostic_items = {}
+	-- 			if result then
+	-- 				diagnostic_items = result.items
+	-- 			end
+	-- 			vim.lsp.diagnostic.on_publish_diagnostics(
+	-- 				nil,
+	-- 				vim.tbl_extend("keep", params, { diagnostics = diagnostic_items }),
+	-- 				{ client_id = client.id }
+	-- 			)
+	-- 		end)
+	-- 	end
+
+	-- 	diagnostic_handler() -- to request diagnostics on buffer when first attaching
+
+	-- 	vim.api.nvim_buf_attach(buffer, false, {
+	-- 		on_lines = function()
+	-- 			if _timers[buffer] then
+	-- 				vim.fn.timer_stop(_timers[buffer])
+	-- 			end
+	-- 			_timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
+	-- 		end,
+	-- 		on_detach = function()
+	-- 			if _timers[buffer] then
+	-- 				vim.fn.timer_stop(_timers[buffer])
+	-- 			end
+	-- 		end,
+	-- 	})
+	-- end
+
+	-- require("lspconfig").ruby_ls.setup({
+	-- 	on_attach = function(client, buffer)
+	-- 		setup_diagnostics(client, buffer)
+	-- 	end,
+	-- })
+
+	-- set up rubocop lsp
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "ruby",
+		callback = function()
+			vim.lsp.start({
+				name = "rubocop",
+				cmd = { "bundle", "exec", "rubocop", "--lsp" },
+			})
+		end,
+	})
+end
