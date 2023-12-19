@@ -7,6 +7,7 @@ settings["ensure_installed_language"] = {
 	"markdown_inline",
 	"latex",
 	"regex",
+	"rust",
 	"bash",
 	"yaml",
 	"lua",

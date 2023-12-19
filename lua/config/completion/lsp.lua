@@ -56,6 +56,7 @@ return function()
 	}
 
 	nvim_lsp.lua_ls.setup(lsp_config)
+	nvim_lsp.rust_analyzer.setup(lsp_config)
 	nvim_lsp.gopls.setup(lsp_config)
 	nvim_lsp.pylsp.setup(lsp_config)
 	nvim_lsp.solargraph.setup(lsp_config)

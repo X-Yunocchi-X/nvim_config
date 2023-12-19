@@ -1,6 +1,6 @@
 return function()
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = require('util.settings').ensure_installed_language,
+		ensure_installed = require("util.settings").ensure_installed_language,
 
 		highlight = {
 			enable = true,
