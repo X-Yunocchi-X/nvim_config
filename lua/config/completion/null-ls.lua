@@ -8,6 +8,7 @@ return function()
 		sources = {
 			null_ls.builtins.formatting.prettier.with({
 				filetypes = {
+					"rust",
 					"vue",
 					"ruby",
 					"typescript",

@@ -60,4 +60,10 @@ return function()
 	nvim_lsp.gopls.setup(lsp_config)
 	nvim_lsp.pylsp.setup(lsp_config)
 	nvim_lsp.solargraph.setup(lsp_config)
+	nvim_lsp.zls.setup(lsp_config)
+	nvim_lsp.clangd.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		cmd = { "clangd", "--offset-encoding=utf-16" },
+	})
 end
