@@ -61,6 +61,16 @@ return function()
 	nvim_lsp.pylsp.setup(lsp_config)
 	nvim_lsp.solargraph.setup(lsp_config)
 	nvim_lsp.zls.setup(lsp_config)
+	nvim_lsp.hls.setup({
+		on_attach = on_attach,
+		cpabilities = capabilities,
+		filetypes = { "haskell", "lhaskell", "cabal" },
+		settings = {
+			haskell = {
+				formattingProvider = "fourmolu",
+			},
+		},
+	})
 	nvim_lsp.clangd.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,

@@ -9,6 +9,7 @@ return function()
 			null_ls.builtins.formatting.prettier.with({
 				filetypes = {
 					"rust",
+					"haskell",
 					"vue",
 					"ruby",
 					"typescript",

@@ -2,6 +2,7 @@ local settings = {}
 
 settings["ensure_installed_language"] = {
 	"c",
+	"haskell",
 	"zig",
 	"cpp",
 	"javascript",

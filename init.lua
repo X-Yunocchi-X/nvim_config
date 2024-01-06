@@ -1,5 +1,12 @@
 local opt = vim.opt
 
+if vim.g.neovide then
+	vim.g.neovide_transparency = 0.6
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_fullscreen = true
+	vim.o.guifont = "CaskaydiaCove Nerd Font:h12"
+end
+
 vim.opt.pumblend = 0
 
 opt.number = true
@@ -32,6 +39,16 @@ opt.autoread = true
 
 opt.signcolumn = "yes"
 opt.list = true
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "haskell",
+-- 	callback = function()
+-- 		vim.opt_local.tabstop = 4
+-- 		vim.opt_local.softtabstop = 4
+-- 		vim.opt_local.shiftwidth = 4
+-- 		vim.opt_local.expandtab = true
+-- 	end,
+-- })
 
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 

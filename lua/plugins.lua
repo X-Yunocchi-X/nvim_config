@@ -104,7 +104,7 @@ require("lazy").setup({
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols" },
-			{ "ray-x/cmp-treesitter",              commit = "c8e3a74" },
+			{ "ray-x/cmp-treesitter", commit = "c8e3a74" },
 		},
 	},
 	{
@@ -197,7 +197,7 @@ require("lazy").setup({
 			end
 		end,
 		dependencies = {
-			{ "andymass/vim-matchup" },        -- better matchup than %
+			{ "andymass/vim-matchup" }, -- better matchup than %
 			{
 				"nvim-treesitter/nvim-treesitter-context", -- shows the context of the currently visible buffer contents
 				config = require("config.editor.ts-context"),
@@ -231,6 +231,17 @@ require("lazy").setup({
 	{
 		"max397574/better-escape.nvim",
 		config = require("config.editor.better_escape"),
+	},
+
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
 	},
 
 	{
