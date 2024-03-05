@@ -1,0 +1,33 @@
+{
+	"sortInterface": {
+		"prefix": "sortInterface",
+		"body": [
+			"type ${1:SortBy} []${2:Type}}",
+			"",
+			"func (${3:it} $2) Len() int			{ return len(${3:it}) }",
+			"func (${3:it} $2) Swap(i, j int)		{ ${3:it}[i], ${3:it}[j] = ${3:it}[j], ${3:it}[i] }",
+			"func (${3:it} $2) Less(i, j int) bool	{ return ${4:${3:it}[i] < ${3:it}[j]} }"
+		]
+	},
+	"heapInterface": {
+		"prefix": "heapInterface",
+		"body": [
+			"type ${1:Heap} []${2:Type}",
+			"",
+			"func (h ${1:Heap}) Len() int			{ return len(h) }",
+			"func (h ${1:Heap}) Less(i, j int) bool	{ return ${4:h[i] < h[j]} }",
+			"func (h ${1:Heap}) Swap(i, j int)		{ h[i], h[j] = h[j], h[i] }",
+			"",
+			"func (h *${1:Heap}) Push(x any) {",
+			"	*h = append(*h, x.(${2:Type}))",
+			"}",
+			"",
+			"func (h *${1:Heap}) Pop() any {",
+			"	n := len(*h)",
+			"	item := (*h)[n-1]",
+			"	*h = (*h)[:n-1]",
+			"	return item",
+			"}"
+		]
+	}
+}

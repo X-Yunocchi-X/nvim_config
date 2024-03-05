@@ -1,0 +1,13 @@
+{
+	"name": "my-snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"go"
+				],
+				"path": "./vscode-like/go.json"
+			}
+		]
+	}
+}
