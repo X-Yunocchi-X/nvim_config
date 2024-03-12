@@ -57,6 +57,16 @@ require("lazy").setup({
 		},
 	},
 
+	--------------------- debug ----------------------
+	{
+		"rcarriga/nvim-dap-ui",
+		config = require("config.debug.dap-ui"),
+		dependencies = {
+			{ "mfussenegger/nvim-dap" },
+
+		}
+	},
+
 	------------------- completion -------------------
 	{
 		"zbirenbaum/copilot.lua",
@@ -67,6 +77,15 @@ require("lazy").setup({
 				config = require("config.completion.copilot-cmp"),
 			},
 		},
+	},
+
+	{
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup {
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			}
+		end
 	},
 
 	{
@@ -104,9 +123,10 @@ require("lazy").setup({
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols" },
-			{ "ray-x/cmp-treesitter", commit = "c8e3a74" },
+			{ "ray-x/cmp-treesitter",              commit = "c8e3a74" },
 		},
 	},
+
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = require("config.completion.null-ls"),
@@ -197,7 +217,7 @@ require("lazy").setup({
 			end
 		end,
 		dependencies = {
-			{ "andymass/vim-matchup" }, -- better matchup than %
+			{ "andymass/vim-matchup" },        -- better matchup than %
 			{
 				"nvim-treesitter/nvim-treesitter-context", -- shows the context of the currently visible buffer contents
 				config = require("config.editor.ts-context"),
