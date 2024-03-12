@@ -63,7 +63,13 @@ require("lazy").setup({
 		config = require("config.debug.dap-ui"),
 		dependencies = {
 			{ "mfussenegger/nvim-dap" },
-
+			{ "jay-babu/mason-nvim-dap.nvim" },
+			{
+				"leoluz/nvim-dap-go",
+				config = function()
+					require("dap-go").setup()
+				end
+			},
 		}
 	},
 
@@ -217,7 +223,7 @@ require("lazy").setup({
 			end
 		end,
 		dependencies = {
-			{ "andymass/vim-matchup" }, -- better matchup than %
+			{ "andymass/vim-matchup" },        -- better matchup than %
 			{
 				"nvim-treesitter/nvim-treesitter-context", -- shows the context of the currently visible buffer contents
 				config = require("config.editor.ts-context"),
