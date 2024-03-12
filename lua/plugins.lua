@@ -217,7 +217,7 @@ require("lazy").setup({
 			end
 		end,
 		dependencies = {
-			{ "andymass/vim-matchup" },        -- better matchup than %
+			{ "andymass/vim-matchup" }, -- better matchup than %
 			{
 				"nvim-treesitter/nvim-treesitter-context", -- shows the context of the currently visible buffer contents
 				config = require("config.editor.ts-context"),
