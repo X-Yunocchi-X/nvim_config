@@ -26,6 +26,8 @@ wk.register({
 			f = { ":Telescope find_files<cr>", "Find files" },
 			w = { ":Telescope live_grep<cr>", "Find words" },
 			c = { ":Telescope colorscheme<cr>", "Change colorscheme" },
+			n = { ":Telescope notify<cr>", "Search notifications" },
+			k = { ":Telescope keymaps<cr>", "Search keymaps" },
 		}
 	}
 })

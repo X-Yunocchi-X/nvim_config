@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-
+local wk = require("which-key")
 local keymap = vim.keymap
 
 keymap.set("n", "<leader>q", "<cmd>q<cr>")
@@ -17,11 +17,19 @@ keymap.set("n", "<A-j>", "<C-w>j")
 keymap.set("n", "<A-k>", "<C-w>k")
 keymap.set("n", "<A-l>", "<C-w>l")
 
-keymap.set("n", "<leader>nh", ":noh<cr>")
+wk.register({
+	["<leader>"] = {
+		["nh"] = { ":noh<cr>", "Cancel search highlight" }
+	}
+})
 
-keymap.set("n", "Y", "y$")                                           -- yank to end of line
-keymap.set("n", "D", "d$")                                           -- delete to end of line
-keymap.set("n", "<leader>l", ":setlocal spell! spelllang=en_us<cr>") -- toggle spell check
+keymap.set("n", "Y", "y$") -- yank to end of line
+keymap.set("n", "D", "d$") -- delete to end of line
+wk.register({
+	["<leader>"] = {
+		l = { ":setlocal spell! spelllang=en_us<cr>", "Toggle spell check" }
+	}
+})
 
 require("core.plugins_mapping.completion")
 require("core.plugins_mapping.editor")
