@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local wk = require("which-key")
 
 keymap.set("n", "<c-e>", "<cmd>NvimTreeToggle<cr>")
 
@@ -11,10 +12,20 @@ keymap.set("t", "<Esc>", "<c-\\><c-n>")
 keymap.set("t", "jk", "<c-\\><c-n>")
 
 -- Trouble
-keymap.set("n", "gt", "<cmd>TroubleToggle<cr>")
+wk.register({
+	g = {
+		t = { ":TroubleToggle<cr>", "Trouble toggle" },
+	}
+})
 
 -- Telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>")
-keymap.set("n", "<leader>fc", "<cmd>Telescope colorscheme<cr>")
-keymap.set("n", "<leader>fs", "<cmd>Telescope grep_string<cr>") -- find current word
+wk.register({
+	["<leader>"] = {
+		f = {
+			name = "Telescope",
+			f = { ":Telescope find_files<cr>", "Find files" },
+			w = { ":Telescope live_grep<cr>", "Find words" },
+			c = { ":Telescope colorscheme<cr>", "Change colorscheme" },
+		}
+	}
+})

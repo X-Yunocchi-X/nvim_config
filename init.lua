@@ -52,8 +52,8 @@ opt.list = true
 
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
-require("core.mapping")
 require("plugins")
+require("core.mapping")
 
 vim.cmd("highlight Pmenu guibg=NONE ctermbg=NONE")
 vim.cmd("highlight CmpDoc guibg=NONE ctermbg=NONE")

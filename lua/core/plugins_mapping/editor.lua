@@ -1,5 +1,13 @@
 local keymap = vim.keymap
 
-keymap.set("n", "<leader>hw", "<Cmd>HopWordMW<CR>")
-keymap.set("n", "<leader>hl", "<Cmd>HopLineMW<CR>")
-keymap.set("n", "<leader>hc", "<Cmd>HopChar1MW<CR>")
+local wk = require("which-key")
+wk.register({
+	["<leader>"] = {
+		h = {
+			name = "hop(jump tool)",
+			w = { ":HopWordMW<CR>", "Hop word" },
+			l = { ":HopLineMW<CR>", "Hop line" },
+			c = { ":HopChar1MW<CR>", "Hop char" },
+		}
+	}
+})
