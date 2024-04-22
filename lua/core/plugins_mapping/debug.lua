@@ -8,6 +8,5 @@ wk.register({
 		["7"] = { ":lua require('dap').toggle_breakpoint()<cr>", "Dap toggle breakpoint" },
 		["8"] = { ":lua require('dap').step_into()<cr>", "Dap step into" },
 		["9"] = { ":lua require('dap').step_over()<cr>", "Dap step over" },
-		["db"] = { ":lua require('dap').set_breakpoint()<cr>", "Dap set breakpoint" },
 	}
 })

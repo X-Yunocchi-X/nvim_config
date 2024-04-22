@@ -38,6 +38,7 @@ return function()
 	local comparators = {
 		require("copilot_cmp.comparators").prioritize,
 
+		cmp.config.compare.kind,
 		-- Below is the default comparitor list and order for nvim-cmp
 		cmp.config.compare.offset,
 		-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
@@ -45,14 +46,13 @@ return function()
 		cmp.config.compare.score,
 		cmp.config.compare.recently_used,
 		cmp.config.compare.locality,
-		cmp.config.compare.kind,
 		cmp.config.compare.sort_text,
 		cmp.config.compare.length,
 		cmp.config.compare.order,
 	}
 
 	require("cmp").setup({
-		preselect = cmp.PreselectMode.Item,
+		preselect = cmp.PreselectMode.None,
 		window = {
 			completion = {
 				border = border("PmenuBorder"),
@@ -109,8 +109,6 @@ return function()
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
-			-- ["<C-p>"] = cmp.mapping.select_prev_item(),
-			-- ["<C-n>"] = cmp.mapping.select_next_item(),
 			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
 			["<C-w>"] = cmp.mapping.close(),
@@ -143,7 +141,7 @@ return function()
 			end,
 		},
 		sources = {
-			{ name = "nvim_lsp", max_item_count = 350 },
+			{ name = "nvim_lsp",  max_item_count = 350 },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
 			{ name = "path" },
@@ -153,7 +151,6 @@ return function()
 			{ name = "orgmode" },
 			{ name = "buffer" },
 			{ name = "copilot" },
-			{ name = "luasnip" },
 		},
 		experimental = {
 			ghost_text = {

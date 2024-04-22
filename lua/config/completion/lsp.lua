@@ -61,6 +61,7 @@ return function()
 	nvim_lsp.pylsp.setup(lsp_config)
 	nvim_lsp.solargraph.setup(lsp_config)
 	nvim_lsp.zls.setup(lsp_config)
+	nvim_lsp.jdtls.setup(lsp_config)
 	nvim_lsp.hls.setup({
 		on_attach = on_attach,
 		cpabilities = capabilities,
