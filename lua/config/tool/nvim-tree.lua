@@ -1,5 +1,4 @@
 return function()
-
 	local icons = {
 		diagnostics = require('util.icons').get('diagnostics'),
 		documents = require('util.icons').get('documents'),
@@ -176,5 +175,4 @@ return function()
 			},
 		},
 	}
-
 end

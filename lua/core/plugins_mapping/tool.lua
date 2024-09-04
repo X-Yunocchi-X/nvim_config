@@ -14,7 +14,7 @@ keymap.set("t", "jk", "<c-\\><c-n>")
 -- Trouble
 wk.register({
 	g = {
-		t = { ":TroubleToggle<cr>", "Trouble toggle" },
+		t = { ":Trouble diagnostics<cr>", "Trouble toggle" },
 	}
 })
 

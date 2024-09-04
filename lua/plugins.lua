@@ -74,6 +74,7 @@ require("lazy").setup({
 		dependencies = {
 			{ "mfussenegger/nvim-dap" },
 			{ "jay-babu/mason-nvim-dap.nvim" },
+			{ "nvim-neotest/nvim-nio" },
 			{
 				"leoluz/nvim-dap-go",
 				config = function()
@@ -290,6 +291,13 @@ require("lazy").setup({
 		"phaazon/hop.nvim",
 		config = require("config.editor.hop"),
 	},
+
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+
 	------------------- language -------------------
 	{
 		"fatih/vim-go",

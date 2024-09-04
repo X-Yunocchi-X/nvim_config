@@ -55,6 +55,10 @@ vim.api.nvim_set_option("clipboard", "unnamedplus")
 require("plugins")
 require("core.mapping")
 
+vim.g.go_doc_keywordprg_enabled = 0
+vim.g.go_def_mapping_enabled = 0
+vim.g.go_code_completion_enabled = 0
+
 vim.cmd("highlight Pmenu guibg=NONE ctermbg=NONE")
 vim.cmd("highlight CmpDoc guibg=NONE ctermbg=NONE")
 vim.cmd("highlight NormalFloat guibg=NONE ctermbg=NONE")
